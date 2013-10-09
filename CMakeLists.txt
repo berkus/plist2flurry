@@ -13,4 +13,7 @@ include_directories(include)
 #	COMMAND ./runTests.${SCRIPT_EXT} ${MY_BUILD_TYPE} ${ARCH_DIR}
 #	)
 
+# plist/src/pugixml.cpp:912:14: error: unused function 'convert_wchar_endian_swap'
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function")
+
 add_library(plist src/pugixml.cpp)
