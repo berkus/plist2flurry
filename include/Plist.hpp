@@ -60,22 +60,22 @@ class Plist
 		static void readPlist(std::istream& stream, T& message);
 		template<typename T>
 		static void readPlist(const std::string& filename, T& message);
-		template<typename T>
-		static void readPlist(const std::wstring& filename, T& message);
+		// template<typename T>
+		// static void readPlist(const std::wstring& filename, T& message);
 
 		// Public binary write methods.
 		
 		static void writePlistBinary(std::ostream& stream, const boost::any& message);
 		static void writePlistBinary(std::vector<char>& plist, const boost::any& message);
 		static void writePlistBinary(const std::string& filename, const boost::any& message);
-		static void writePlistBinary(const std::wstring& filename, const boost::any& message);
+		// static void writePlistBinary(const std::wstring& filename, const boost::any& message);
 
 		// Public XML write methods.
 		
 		static void writePlistXML(std::ostream& stream, const boost::any& message);
 		static void writePlistXML(std::vector<char>& plist, const boost::any& message);
 		static void writePlistXML(const std::string& filename, const boost::any& message);
-		static void writePlistXML(const std::wstring& filename, const boost::any& message);
+		// static void writePlistXML(const std::wstring& filename, const boost::any& message);
 
 	private:
 
@@ -378,14 +378,14 @@ inline void Plist::writePlistBinary(
 	stream.close();
 }
 
-inline void Plist::writePlistBinary(
-				const std::wstring& filename,
-				const boost::any& message)
-{
-	std::ofstream stream(filename.c_str(), std::ios::binary);
-	writePlistBinary(stream, message);
-	stream.close();
-}
+// inline void Plist::writePlistBinary(
+// 				const std::wstring& filename,
+// 				const boost::any& message)
+// {
+// 	std::ofstream stream(filename.c_str(), std::ios::binary);
+// 	writePlistBinary(stream, message);
+// 	stream.close();
+// }
 
 inline void Plist::writePlistXML(std::vector<char>& plist, const boost::any& message)
 {
@@ -417,14 +417,14 @@ inline void Plist::writePlistXML(
 	stream.close();
 }
 
-inline void Plist::writePlistXML(
-		const std::wstring& filename,
-		const boost::any& message)
-{
-	std::ofstream stream(filename.c_str(), std::ios::binary);
-	writePlistXML(stream, message);
-	stream.close();
-}
+// inline void Plist::writePlistXML(
+// 		const std::wstring& filename,
+// 		const boost::any& message)
+// {
+// 	std::ofstream stream(filename.c_str(), std::ios::binary);
+// 	writePlistXML(stream, message);
+// 	stream.close();
+// }
 
 inline int Plist::countAny(const boost::any& object)
 {
@@ -761,15 +761,15 @@ inline void Plist::readPlist( std::istream& stream, T& message)
 
 }
 
-template <typename T>
-inline void Plist::readPlist(const std::wstring& filename, T& message)
-{
-	std::ifstream stream(filename.c_str(), std::ios::binary);
-	if(!stream)
-		throw std::runtime_error("Can't open file.");
-	readPlist(stream, message);
-	stream.close();
-}
+// template <typename T>
+// inline void Plist::readPlist(const std::wstring& filename, T& message)
+// {
+// 	std::ifstream stream(filename.c_str(), std::ios::binary);
+// 	if(!stream)
+// 		throw std::runtime_error("Can't open file.");
+// 	readPlist(stream, message);
+// 	stream.close();
+// }
 
 template <typename T>
 inline void Plist::readPlist(const std::string& filename, T& message)
