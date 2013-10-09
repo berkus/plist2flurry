@@ -5758,7 +5758,7 @@ namespace
 			return PUGIXML_TEXT("NaN");
 
 		case FP_INFINITE:
-			return PUGIXML_TEXT("-Infinity") + (value > 0);
+			return &PUGIXML_TEXT("-Infinity")[(value > 0)];
 
 		case FP_ZERO:
 			return PUGIXML_TEXT("0");
