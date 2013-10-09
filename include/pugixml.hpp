@@ -28,40 +28,11 @@
 // cstddef is needed so that we get the 'std' namespace declaration (STLport sometimes makes std a define)
 #include <cstddef>
 
-// Forward declarations for STL classes to reduce include dependencies
-namespace std
-{
-	struct bidirectional_iterator_tag;
+#include <istream>
+#include <ostream>
+#include <iterator>
+#include <string>
 
-#ifdef __SUNPRO_CC
-	// Sun C++ compiler has a bug which forces template argument names in forward declarations to be the same as in actual definitions
-	template <class _T> class allocator;
-	template <class _charT> struct char_traits;
-	template <class _charT, class _Traits> class basic_istream;
-	template <class _charT, class _Traits> class basic_ostream;
-	template <class _charT, class _Traits, class _Allocator> class basic_string;
-#else
-	// Borland C++ compiler has a bug which forces template argument names in forward declarations to be the same as in actual definitions
-	template <class _Ty> class allocator;
-
-    // STLport defines char_traits as a class instead of a struct
-#   ifdef _STLPORT_VERSION
-	template <class _Ty> class char_traits;
-#   else
-	template <class _Ty> struct char_traits;
-#   endif
-
-	template <class _Elem, class _Traits> class basic_istream;
-	template <class _Elem, class _Traits> class basic_ostream;
-	template <class _Elem, class _Traits, class _Ax> class basic_string;
-#endif
-
-	// Digital Mars compiler has a bug which requires a forward declaration for explicit instantiation (otherwise type selection is messed up later, producing link errors)
-	// Also note that we have to declare char_traits as a class here, since it's defined that way
-#ifdef __DMC__
-	template <> class char_traits<char>;
-#endif
-}
 #endif
 
 // Macro for deprecated features
