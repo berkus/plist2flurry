@@ -13,6 +13,10 @@ int main()
     static boost::any anInt64 = int64_t(0);
     static boost::any aLong = long(0);
     static boost::any aShort = short(0);
+    static boost::any anUInt32 = uint32_t(0);
+    static boost::any anUInt64 = uint64_t(0);
+    static boost::any aULong = (unsigned long)(0);
+    static boost::any aUShort = (unsigned short)(0);
     static boost::any anArray = vector<boost::any>();
     static boost::any aMap = map<string, boost::any>();
     static boost::any aByteArray = vector<char>();
@@ -25,6 +29,10 @@ int main()
          << "int64 type " << anInt64.type().name() << endl
          << "long type " << aLong.type().name() << endl
          << "short type " << aShort.type().name() << endl
+         << "uint32 type " << anUInt32.type().name() << endl
+         << "uint64 type " << anUInt64.type().name() << endl
+         << "unsigned long type " << aULong.type().name() << endl
+         << "unsigned short type " << aUShort.type().name() << endl
          << "array type " << anArray.type().name() << endl
          << "map type " << aMap.type().name() << endl
          << "bytearray type " << aByteArray.type().name() << endl
