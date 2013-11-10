@@ -469,7 +469,7 @@ inline std::vector<unsigned char> Plist::writeBinary(PlistHelperData& d, const b
 	std::vector<unsigned char> value;
 	if(obj.type() == anInt32.type())
 		value = writeBinaryInteger(d, boost::any_cast<const int32_t&>(obj), true);
-	if(obj.type() == anUInt32.type())
+	else if(obj.type() == anUInt32.type())
 		value = writeBinaryInteger(d, boost::any_cast<const uint32_t&>(obj), true);
 	else if(obj.type() == anInt64.type())
 		value = writeBinaryInteger(d, boost::any_cast<const int64_t&>(obj), true);
