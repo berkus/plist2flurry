@@ -17,3 +17,7 @@ include_directories(include)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-unused-function")
 
 add_library(plist src/pugixml.cpp)
+
+if (BUILD_TESTING)
+    add_subdirectory(tests)
+endif (BUILD_TESTING)
