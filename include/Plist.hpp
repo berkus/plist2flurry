@@ -488,7 +488,7 @@ inline std::vector<unsigned char> Plist::writeBinary(PlistHelperData& d, const b
 	else if(obj.type() == aPlistBool.type())
 		value = writeBinaryBool(d, boost::any_cast<const bool&>(obj));
 	else
-		throw runtime_error((string("Plist Error: Can't serialize type ") + obj.type().name()).c_str());
+		throw runtime_error(string("Plist Error: Can't serialize type ") + obj.type().name());
 
 	return value;
 }
