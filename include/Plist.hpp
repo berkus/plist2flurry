@@ -453,9 +453,13 @@ inline std::vector<unsigned char> Plist::writeBinary(PlistHelperData& d, const b
 	static boost::any aDouble = double(0);
 	static boost::any aFloat = float(0);
 	static boost::any anInt32 = int32_t(0);
+	static boost::any anUInt32 = uint32_t(0);
 	static boost::any anInt64 = int64_t(0);
+	static boost::any anUInt64 = uint64_t(0);
 	static boost::any aLong = long(0);
+	static boost::any aULong = (unsigned long)(0);
 	static boost::any aShort = short(0);
+	static boost::any aUShort = (unsigned short)(0);
 	static boost::any anArray = vector<boost::any>();
 	static boost::any aMap = map<string, boost::any>();
 	static boost::any aByteArray = vector<char>();
@@ -465,12 +469,20 @@ inline std::vector<unsigned char> Plist::writeBinary(PlistHelperData& d, const b
 	std::vector<unsigned char> value;
 	if(obj.type() == anInt32.type())
 		value = writeBinaryInteger(d, boost::any_cast<const int32_t&>(obj), true);
+	if(obj.type() == anUInt32.type())
+		value = writeBinaryInteger(d, boost::any_cast<const uint32_t&>(obj), true);
 	else if(obj.type() == anInt64.type())
 		value = writeBinaryInteger(d, boost::any_cast<const int64_t&>(obj), true);
+	else if(obj.type() == anUInt64.type())
+		value = writeBinaryInteger(d, boost::any_cast<const uint64_t&>(obj), true);
 	else if(obj.type() == aLong.type())
 		value = writeBinaryInteger(d, boost::any_cast<const long&>(obj), true);
+	else if(obj.type() == aULong.type())
+		value = writeBinaryInteger(d, boost::any_cast<const unsigned long&>(obj), true);
 	else if(obj.type() == aShort.type())
 		value = writeBinaryInteger(d, boost::any_cast<const short&>(obj), true);
+	else if(obj.type() == aUShort.type())
+		value = writeBinaryInteger(d, boost::any_cast<const unsigned short&>(obj), true);
 	else if(obj.type() == aMap.type())
 		value = writeBinaryDictionary(d, boost::any_cast<const map<string, boost::any>& >(obj));
 	else if(obj.type() == aString.type())
